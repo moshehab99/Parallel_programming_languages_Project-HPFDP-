@@ -153,9 +153,13 @@ HPFDP
 ---
 
 ## Team Members
-(To be updated)
+Mohamed Shehab Eldeen Khalil
+Mahmoud Mostafa Mohamed
+Mohamed Shady Aish
+Mostafa Ezzat Abd El-Naeem
+Saleh Saber Ebrahim
 
 ---
 
 ## Supervisor
-Course Project – Parallel Processing Concepts
+Eng. El-Zahraa Eslam

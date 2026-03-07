@@ -153,11 +153,11 @@ HPFDP
 ---
 
 ## Team Members
-Mohamed Shehab Eldeen Khalil
-Mahmoud Mostafa Mohamed
-Mohamed Shady Aish
-Mostafa Ezzat Abd El-Naeem
-Saleh Saber Ebrahim
+- Mohamed Shehab Eldeen Khalil
+- Mahmoud Mostafa Mohamed
+- Mohamed Shady Aish
+- Mostafa Ezzat Abd El-Naeem
+- Saleh Saber Ebrahim
 
 ---
 

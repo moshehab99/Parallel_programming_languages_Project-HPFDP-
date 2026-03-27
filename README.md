@@ -1,154 +1,126 @@
 # High-Performance Financial Data Processor (HPFDP)
 
 ## Project Overview
-High-Performance Financial Data Processor (HPFDP) is a system designed to process large-scale financial datasets efficiently using **parallel processing techniques**.  
-The system focuses on improving performance when dealing with large volumes of financial transactions by utilizing **Multi-Threading** and **Batch Processing with Spring Framework**.
+High-Performance Financial Data Processor (HPFDP) is a Python-based system designed to process large financial datasets efficiently using **parallel processing techniques**.
 
-The project simulates real-world financial data processing scenarios such as transaction analysis, fraud detection preparation, and large dataset transformation.
+The system uses:
+- Multiprocessing (parallel execution)
+- Batch processing (chunk-based reading)
+- ETL pipeline (Extract, Transform, Load)
 
 ---
 
 ## Problem Statement
-Financial systems generate massive volumes of transactional data every second.  
-Processing these datasets sequentially can cause significant performance bottlenecks, especially when performing operations such as:
-
-- Data validation
-- Data transformation
-- Aggregation and analytics
-- Loading data into databases
-
-To solve this problem, the project applies **parallel computing techniques** to improve processing speed and scalability.
+Processing large financial datasets sequentially is slow and inefficient.  
+This project solves this problem by applying parallel and batch processing to improve performance and scalability.
 
 ---
 
 ## Project Objectives
-The main objectives of this project are:
-
-- Process large financial datasets efficiently.
-- Apply **parallelism concepts** using multi-threading.
-- Implement **batch data processing using Spring Batch**.
-- Demonstrate how large files or databases can be processed concurrently.
-- Build a scalable backend architecture for financial data pipelines.
+- Handle large financial datasets efficiently
+- Apply multiprocessing for parallel execution
+- Implement batch processing using chunking
+- Build an ETL pipeline
+- Store processed data in MySQL
 
 ---
 
-## Key Technologies
-The project will use the following technologies:
-
-- Java
-- Spring Framework
-- Spring Batch
-- Multi-threading (Java Concurrency)
-- Maven / Gradle
-- Git & GitHub
-- Relational Database (MySQL or PostgreSQL)
+## Technologies Used
+- Python
+- Pandas
+- SQLAlchemy
+- MySQL
+- CustomTkinter (GUI)
+- concurrent.futures (ProcessPoolExecutor)
 
 ---
 
-## System Architecture (Conceptual)
-The system will follow a modular architecture consisting of several layers:
+## System Workflow
 
-### 1. Data Input Layer
-Reads large financial datasets (CSV/JSON files or database records).
+### 1. Extract
+Read large CSV file using:
+```python
+pd.read_csv(file_path, chunksize=5000)
+```
 
-### 2. Processing Layer
-- Multi-threading for parallel processing of large files or database records.
-- Data validation and transformation.
+### 2. Transform
+- Calculate Tax (14%)
+- Calculate Total Amount
 
-### 3. Batch Processing Layer
-Implemented using **Spring Batch**.
-
-Handles ETL operations:
-- Extract financial data
-- Transform the data
-- Load processed data into a database
-
-### 4. Data Storage Layer
-Stores processed financial data in a database.
+### 3. Load
+Store processed data into MySQL database using:
+```python
+to_sql()
+```
 
 ---
 
-## Parallel Processing Approach
+## Parallel Processing
 
-### 1. Multi-Threading
-Multi-threading will be used to process large datasets concurrently.
+- The dataset is divided into chunks
+- Each chunk is processed in a separate process
+- Processes run concurrently using:
 
-Examples:
-- Splitting large files into chunks processed by multiple threads
-- Parallel processing of financial transactions
-- Concurrent database read/write operations
-
-Technologies used:
-- Java `ExecutorService`
-- Thread Pools
-- `Future` / `Callable`
+```python
+from concurrent.futures import ProcessPoolExecutor
+```
 
 ---
 
-### 2. Batch Processing with Spring
-Spring Batch will be used to implement **ETL pipelines** for large financial datasets.
+## Batch Processing
 
-Batch processing will handle:
-- Reading financial data in chunks
-- Transforming transaction data
-- Writing results to the database
+Batch processing is implemented using:
 
-Key components:
-- Job
-- Step
-- ItemReader
-- ItemProcessor
-- ItemWriter
+```python
+chunksize=5000
+```
+
+This allows efficient memory usage and faster processing.
 
 ---
 
-## Example Use Case
-Processing a large dataset of financial transactions:
+## Application Interface
 
-1. Import a dataset containing millions of transactions.
-2. Divide the dataset into chunks.
-3. Process chunks in parallel using multiple threads.
-4. Apply validation and transformation.
-5. Load the processed data into a database using Spring Batch.
+Below is a screenshot of the application GUI:
+
+![Application GUI](images/gui.png)
 
 ---
 
-## Project Workflow
-The project will be implemented in the following stages:
+## Example Output
 
-1. Project setup and GitHub repository initialization.
-2. Designing the system architecture.
-3. Implementing multi-threaded file processing.
-4. Integrating Spring Batch for ETL pipelines.
-5. Connecting to the database.
-6. Performance testing and optimization.
+- Processing chunks in parallel
+- Saving results to MySQL
+- Total processed rows displayed
 
 ---
 
-## Repository Structure (Planned)
+## Project Structure
 
 ```
 HPFDP
 │
-├── src/main/java
-│   ├── config
-│   ├── batch
-│   ├── multithreading
-│   ├── service
-│   └── model
-│
-├── src/main/resources
-│   └── datasets
-│
+├── processor.py
+├── main_gui.py
+├── data_generator.py
+├── financial_data.csv
+├── images
+│   └── gui.png
 └── README.md
 ```
 
 ---
 
+## Performance Advantage
+
+Instead of processing data sequentially, the system processes chunks in parallel, significantly reducing execution time.
+
+---
+
 ## Future Improvements
-- Implement distributed processing
-- Add real-time streaming with Kafka
-- Add financial analytics dashboards
+- Add real-time processing (Kafka)
+- Distributed processing
+- Analytics dashboard
 
 ---
 
@@ -158,7 +130,6 @@ HPFDP
 - Mohamed Shady Aish
 - Mostafa Ezzat Abd El-Naeem
 - Saleh Saber Ebrahim
-
 ---
 
 ## Supervisor

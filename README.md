@@ -83,7 +83,8 @@ This allows efficient memory usage and faster processing.
 
 Below is a screenshot of the application GUI:
 
-![Application GUI](images/gui.png)
+<img width="1206" height="907" alt="gui" src="https://github.com/user-attachments/assets/41de154a-c3eb-48f8-a2a5-b0dc62d27f88" />
+
 
 ---
 

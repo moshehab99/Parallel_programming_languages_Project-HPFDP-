@@ -166,7 +166,7 @@ The system includes a modern graphical interface where users can:
 
 # Application Interface
 
-![GUI Screenshot](images/gui.png)
+<img width="1881" height="1066" alt="Screenshot 2026-04-25 001126" src="https://github.com/user-attachments/assets/59a7c77f-bafd-4140-b5cf-6d9956aaf797" />
 
 ---
 

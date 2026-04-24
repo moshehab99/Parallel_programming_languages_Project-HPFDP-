@@ -21,12 +21,10 @@ class HPFDP_App(ctk.CTk):
         self.file_path_label = ctk.CTkLabel(self, text="No file selected", text_color="gray")
         self.file_path_label.pack(pady=5)
 
-        # زر لتشغيل البراليل (المشروع الأساسي)
         self.start_par_btn = ctk.CTkButton(self, text="Start Parallel Processing (Fast)", state="disabled", 
                                        fg_color="green", command=lambda: self.run_process_thread("parallel"))
         self.start_par_btn.pack(pady=10)
 
-        # زر لتشغيل السكونشل (للمقارنة)
         self.start_seq_btn = ctk.CTkButton(self, text="Start Sequential Processing (Slow)", state="disabled", 
                                        fg_color="orange", text_color="black", command=lambda: self.run_process_thread("sequential"))
         self.start_seq_btn.pack(pady=10)
@@ -38,10 +36,9 @@ class HPFDP_App(ctk.CTk):
         self.status_label = ctk.CTkLabel(self, text="Status: Ready", text_color="white")
         self.status_label.pack(pady=10)
 
-        # جزء لإظهار المقارنة في الواجهة
         self.comparison_label = ctk.CTkLabel(self, text="", font=("Arial", 14, "italic"), text_color="cyan")
         self.comparison_label.pack(pady=20)
-        self.seq_time_cached = None # لحفظ وقت السكونشل للمقارنة لاحقاً
+        self.seq_time_cached = None
 
     def select_file(self):
         file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
@@ -50,7 +47,7 @@ class HPFDP_App(ctk.CTk):
             self.start_par_btn.configure(state="normal")
             self.start_seq_btn.configure(state="normal")
             self.selected_file = file_path
-            self.comparison_label.configure(text="") # مسح المقارنة السابقة
+            self.comparison_label.configure(text="")  
             self.seq_time_cached = None
 
     def run_process_thread(self, mode):
@@ -60,9 +57,7 @@ class HPFDP_App(ctk.CTk):
         status_color = "yellow" if mode == "parallel" else "orange"
         self.status_label.configure(text=status_text, text_color=status_color)
         self.progress_bar.start()
-        
-        # استخدام Threading هنا لمنع تجمد الواجهة (GUI Responsiveness)
-        # الـ Multiprocessing بيحصل جوه الـ processor.py في الـ Backend
+   
         thread = threading.Thread(target=self.execute_batch, args=(mode,))
         thread.start()
 
@@ -71,7 +66,6 @@ class HPFDP_App(ctk.CTk):
             if mode == "parallel":
                 total, duration = start_parallel_processing(self.selected_file)
                 self.status_label.configure(text=f"SUCCESS (Parallel): {total} rows in {duration}s", text_color="green")
-                # إظهار المقارنة لو وقت السكونشل موجود
                 if self.seq_time_cached:
                     improvement = round(((self.seq_time_cached - duration) / self.seq_time_cached) * 100, 2)
                     self.comparison_label.configure(text=f"Performance Gain: {improvement}% Faster than Sequential!")

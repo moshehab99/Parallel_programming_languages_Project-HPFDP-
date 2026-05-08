@@ -327,13 +327,14 @@ The system includes a modern graphical interface where users can:
 
 ## Sequential Processing
 
-<img width="1365" height="768" alt="Sequential Processing" src="./seq.png" />
+<img width="1690" height="955" alt="seq" src="https://github.com/user-attachments/assets/6ac49fa0-372b-4c99-a1c5-56bd0722cb3c" />
+
 
 ---
 
 ## Parallel Processing
 
-<img width="1365" height="768" alt="Parallel Processing" src="./parallel.png" />
+<img width="1570" height="977" alt="parallel" src="https://github.com/user-attachments/assets/9b4ab1a9-e0b7-4e9c-81d7-1065bc97c49d" />
 
 ---
 
